@@ -3,81 +3,77 @@
     // Board is created with divs 
     // Changing the class of the div makes them display an X or O
     // Use on.('click', ...) on the div to change their class
-
-
-// LOGIC
-
-
-
-$('document').ready(function (){
-
-        // define a variable for both players 'player1' and 'player2'
+      // define a variable for both players 'player1' and 'player2'
         // define a variable name 'turn' thats value is either player1 or player2.
         // create an object that holds a key value pair for every position on the board
 
 
     // const player1 = x;
     // const player2 = o;
-    let turn = 'X';
-    let winner = ''
-       
-    const board = {
-        box1: '',
-        box2: '',
-        box3: '',
-        box4: '',
-        box5: '',
-        box6: '',
-        box7: '',
-        box8: '',
-        box9: '',
-    };
-    
-    const determineWinner = function () {
-        //Rows
-        if (!winner) {
-            for (let i = 1; i < 8; i + 3) {
-                if (board.boxi === board[`box${i+1}`] && board.box1 === board[`box${i+3}`]) {
-                    winner = board.boxi
-                    console.log(winner)
-                }  
-            }
-        }
 
-        console.log(board['box2'])
-        //Columns
-        if (!winner) {
-            for (let i = 1; i < 4; i + 1) {
-                if (board.boxi === board[`box${i+3}`] && board.box1 === board.box[`box${i+6}`]) {
-                    winner = board.boxi
-                    console.log(winner)
-                }
+// LOGIC
+const determineWinner = function () {
+    //Rows
+    if (!winner) {
+        for (let i = 1; i <= 7; i + 3) {
+            if (board[`box${i}`] === board[`box${i+1}`] && board[`box${i}`] === board[`box${i+2}`]) {
+                winner = board[`box${i}`]
+                console.log(winner)
+            }  
         }
-        //Diagonal
-        if (!winner) {
-                if (board.box1 === board.box5 && board.box1 === board.box9 || board.box3 === board.box5 && board.box3 === board.box7) {
-                    winner = board.box5
-                    console.log(winner)
-                }
-            }
-        }   
     }
 
+    //Columns
+    if (!winner) {
+        for (let i = 1; i <= 3; i + 1) {
+            if (board[`box${i}`] === board[`box${i+3}`] && board[`box${i}`] === board[`box${i+6}`]) {
+                winner = board[`box${i}`]
+                console.log(winner)
+            }
+    }
+    //Diagonal
+    if (!winner) {
+            if (board.box1 === board.box5 && board.box1 === board.box9 || board.box3 === board.box5 && board.box3 === board.box7) {
+                winner = board.box5
+                console.log(winner)
+            }
+        }
+    }  
+}
+
+$('document').ready(function (){
+
+    let turn = 'X';
+    let winner = ''
+           
+        const board = {
+            box1: '',
+            box2: '',
+            box3: '',
+            box4: '',
+            box5: '',
+            box6: '',
+            box7: '',
+            box8: '',
+            box9: '',
+        };
+    
+    
     $('#game-box').on('click', function(event) {
         let clickedBox = event.target.id;
 
         if (turn === 'X') {
             board[clickedBox]= 'X'
             $(`#${clickedBox}`).addClass('x')
-
             turn = 'O'
+
         } else if (turn === 'O') {
             board[clickedBox]= 'O'
             $(`#${clickedBox}`).addClass('o')
-
             turn = 'X'
+
         }
-        // determineWinner()
+        determineWinner()
     })
 
     
