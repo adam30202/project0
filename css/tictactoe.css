@@ -1,0 +1,42 @@
+/* * {
+    border: 0.1px solid black;
+} */
+
+/* #container {
+} */
+
+body {
+    
+    background-color: rgb(157, 157, 164);
+    
+}
+
+#container {
+    width: 950px;
+    height: 950px;
+    margin: auto;
+    border: 1px solid black;
+}
+
+#game-box {
+    display: grid;
+    grid-template-columns: 150px 150px 150px;
+    grid-template-rows: 150px 150px 150px;
+    border: 1px solid black;
+    justify-content: center
+}
+
+.grid-box {
+    display: grid;
+    place-items: center;
+    background-color: rgb(191, 33, 33);
+    border: 1px solid black;
+}
+
+.x {
+    background-color: black;
+}
+
+.o {
+    background-color: rgb(255, 250, 250);
+}

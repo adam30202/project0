@@ -6,20 +6,49 @@
 
 
 // LOGIC
-    // define a variable for both players 'player1' and 'player2'
-    // define a variable name 'turn' thats value is either player1 or player2.
-    // create an object that holds a key value pair for every position on the board
-     const board = {
-        pos1: null,
-        pos2: null,
-        pos3: null,
-        pos4: null,
-        pos5: null,
-        pos6: null,
-        pos7: null,
-        pos8: null,
-        pos9: null,
-     }
+
+
+
+$('document').ready(function (){
+
+        // define a variable for both players 'player1' and 'player2'
+        // define a variable name 'turn' thats value is either player1 or player2.
+        // create an object that holds a key value pair for every position on the board
+
+
+    // const player1 = x;
+    // const player2 = o;
+    let turn = 'Player 1';
+       
+    const board = {
+        box1: '',
+        box2: '',
+        box3: '',
+        box4: '',
+        box5: '',
+        box6: '',
+        box7: '',
+        box8: '',
+        box9: '',
+    };
+
+
+    $('#game-box').on('click', function(event) {
+        let clickedBox = event.target.id;
+
+        if (turn === 'Player 1') {
+            board[clickedBox]= 'X'
+            $(`#${clickedBox}`).addClass('x')
+
+            turn = 'Player 2'
+        } else if (turn === 'Player 2') {
+            board[clickedBox]= 'O'
+            $(`#${clickedBox}`).addClass('o')
+
+            turn = 'Player 1'
+        }
+        console.log(board)
+    })
 
      //Pos value is either X or O
     // These values can be changed on.(click), their value determines the class of a div, that will then determine whether the div shows an X or 0
@@ -33,3 +62,5 @@
 
     //How do we decide who goes first?
         //  A button that on.('click', ...), changes the turn variable that decides whose turn it is.
+
+})
