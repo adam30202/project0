@@ -18,7 +18,8 @@ $('document').ready(function (){
 
     // const player1 = x;
     // const player2 = o;
-    let turn = 'Player 1';
+    let turn = 'X';
+    let winner = ''
        
     const board = {
         box1: '',
@@ -31,24 +32,56 @@ $('document').ready(function (){
         box8: '',
         box9: '',
     };
+    
+    const determineWinner = function () {
+        //Rows
+        if (!winner) {
+            for (let i = 1; i < 8; i + 3) {
+                if (board.boxi === board[`box${i+1}`] && board.box1 === board[`box${i+3}`]) {
+                    winner = board.boxi
+                    console.log(winner)
+                }  
+            }
+        }
 
+        console.log(board['box2'])
+        //Columns
+        if (!winner) {
+            for (let i = 1; i < 4; i + 1) {
+                if (board.boxi === board[`box${i+3}`] && board.box1 === board.box[`box${i+6}`]) {
+                    winner = board.boxi
+                    console.log(winner)
+                }
+        }
+        //Diagonal
+        if (!winner) {
+                if (board.box1 === board.box5 && board.box1 === board.box9 || board.box3 === board.box5 && board.box3 === board.box7) {
+                    winner = board.box5
+                    console.log(winner)
+                }
+            }
+        }   
+    }
 
     $('#game-box').on('click', function(event) {
         let clickedBox = event.target.id;
 
-        if (turn === 'Player 1') {
+        if (turn === 'X') {
             board[clickedBox]= 'X'
             $(`#${clickedBox}`).addClass('x')
 
-            turn = 'Player 2'
-        } else if (turn === 'Player 2') {
+            turn = 'O'
+        } else if (turn === 'O') {
             board[clickedBox]= 'O'
             $(`#${clickedBox}`).addClass('o')
 
-            turn = 'Player 1'
+            turn = 'X'
         }
-        console.log(board)
+        // determineWinner()
     })
+
+    
+    
 
      //Pos value is either X or O
     // These values can be changed on.(click), their value determines the class of a div, that will then determine whether the div shows an X or 0
