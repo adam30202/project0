@@ -1,3 +1,76 @@
+$('document').ready(function (){
+
+    let turn = 'X';
+    let winner = ''
+    let turnCount = 0
+
+        const board = {
+            box1: '',
+            box2: '',
+            box3: '',
+            box4: '',
+            box5: '',
+            box6: '',
+            box7: '',
+            box8: '',
+            box9: '',
+        };
+    
+    const determineWinner = function () {
+        //Rows
+        if (!winner) {
+            for (let i = 1; i <= 7; i += 3) {
+                if (board[`box${i}`] === board[`box${i+1}`] && board[`box${i}`] === board[`box${i+2}`]) {
+                    winner = board[`box${i}`]
+                    console.log(winner)
+                }  
+            }
+        }
+        //Columns
+        if (!winner) {
+            for (let i = 1; i <= 3; i += 1) {
+                if (board[`box${i}`] === board[`box${i+3}`] && board[`box${i}`] === board[`box${i+6}`]) {
+                    winner = board[`box${i}`]
+                    console.log(winner)
+                }
+            }
+        }
+        //Diagonal
+        if (!winner) {
+            if (board.box1 === board.box5 && board.box1 === board.box9 || board.box3 === board.box5 && board.box3 === board.box7) {
+                winner = board.box5
+                console.log(winner)
+            }
+        }
+
+        if (!winner && turnCount === 9) {
+            console.log('draw')
+        }
+
+    }  
+    
+    
+    $('#game-box').on('click', function(event) {
+        let clickedBox = event.target.id;
+        
+        if (turn === 'X' && turnCount < 9 && !winner) {
+            board[clickedBox]= 'X'
+            $(`#${clickedBox}`).addClass('x')
+            turn = 'O'
+            turnCount++
+            determineWinner()
+        } else if (turn === 'O' && turnCount < 9 && !winner) {
+            board[clickedBox]= 'O'
+            $(`#${clickedBox}`).addClass('o')
+            turn = 'X'
+            turnCount++
+            determineWinner()
+        }
+    })
+
+    
+
+
 
 // HTML&CSS
     // Board is created with divs 
@@ -12,71 +85,8 @@
     // const player2 = o;
 
 // LOGIC
-const determineWinner = function () {
-    //Rows
-    if (!winner) {
-        for (let i = 1; i <= 7; i + 3) {
-            if (board[`box${i}`] === board[`box${i+1}`] && board[`box${i}`] === board[`box${i+2}`]) {
-                winner = board[`box${i}`]
-                console.log(winner)
-            }  
-        }
-    }
 
-    //Columns
-    if (!winner) {
-        for (let i = 1; i <= 3; i + 1) {
-            if (board[`box${i}`] === board[`box${i+3}`] && board[`box${i}`] === board[`box${i+6}`]) {
-                winner = board[`box${i}`]
-                console.log(winner)
-            }
-    }
-    //Diagonal
-    if (!winner) {
-            if (board.box1 === board.box5 && board.box1 === board.box9 || board.box3 === board.box5 && board.box3 === board.box7) {
-                winner = board.box5
-                console.log(winner)
-            }
-        }
-    }  
-}
 
-$('document').ready(function (){
-
-    let turn = 'X';
-    let winner = ''
-           
-        const board = {
-            box1: '',
-            box2: '',
-            box3: '',
-            box4: '',
-            box5: '',
-            box6: '',
-            box7: '',
-            box8: '',
-            box9: '',
-        };
-    
-    
-    $('#game-box').on('click', function(event) {
-        let clickedBox = event.target.id;
-
-        if (turn === 'X') {
-            board[clickedBox]= 'X'
-            $(`#${clickedBox}`).addClass('x')
-            turn = 'O'
-
-        } else if (turn === 'O') {
-            board[clickedBox]= 'O'
-            $(`#${clickedBox}`).addClass('o')
-            turn = 'X'
-
-        }
-        determineWinner()
-    })
-
-    
     
 
      //Pos value is either X or O
