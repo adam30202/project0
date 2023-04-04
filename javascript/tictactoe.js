@@ -123,11 +123,11 @@ $('document').ready(function (){
             turnCount = 0;
             $('#resetButton').addClass('animate__fadeOut');
             setTimeout(function () {
-                resetButton.remove()}, 3000
+                resetButton.remove()}, 1500
             )
             $('#printedResult').addClass('animate__fadeOut');
             setTimeout(function () {
-                $('#printedResult').remove()}, 3000
+                $('#printedResult').remove()}, 1500
             )
         }
     })
