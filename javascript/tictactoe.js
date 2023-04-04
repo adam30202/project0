@@ -1,8 +1,10 @@
 $('document').ready(function (){
 
     let turn = 'X';
-    let result = ''
-    let turnCount = 0
+    let result = '';
+    let turnCount = 0;
+    let XScore = 0;
+    let OScore = 0;
 
         const board = {
             box1: '',
@@ -47,14 +49,25 @@ $('document').ready(function (){
             result = 'draw'
             console.log('draw')
         }
-        //Displays result
+        //Displays result and adds to score
         if (result) {
             let printedResult = $("<p>").html(result);
             $('header').append(printedResult)
+            let resetButton = $("<input>").attr({type: 'button', value: 'Play again?', id: 'resetButton'});
+            $('header').append(resetButton)
+            if (result === 'X') {
+                XScore ++;
+                console.log(XScore)
+                $('#XScore').html(XScore.toString())
+            } else if (result === 'O') {
+                OScore ++;
+                $('#OScore').html(OScore.toString())
+                console.log(OScore)
+            }
         }
-    }  
+    }
     
-    
+    //Function that allows user to place X or O on board
     $('#game-box').on('click', function(event) {
         let clickedBox = event.target.id;
 
@@ -75,9 +88,7 @@ $('document').ready(function (){
         }
     })
 
-
-
-
+    //Allows user to go first as X or O
     $('#chooseX').on('click', function () {
         if (turnCount === 0) {
             turn = 'X';
@@ -88,6 +99,16 @@ $('document').ready(function (){
         if (turnCount === 0) {
         turn = 'O';
         }
+    })
+
+    //Button to reset board
+    $('#resetButton').on('click', function (){
+        console.log('hello')
+        for (let i = 1; i <= 9; i++) {
+            board[`box${i}`] = ''
+        }
+        console.log(board)
+        $('.grid-box').removeClass('o');
     })
 })
 
