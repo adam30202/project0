@@ -1,7 +1,7 @@
 $('document').ready(function (){
 
     let turn = 'X';
-    let winner = ''
+    let result = ''
     let turnCount = 0
 
         const board = {
@@ -18,42 +18,47 @@ $('document').ready(function (){
     
     const determineWinner = function () {
         //Rows
-        if (!winner) {
+        if (!result) {
             for (let i = 1; i <= 7; i += 3) {
                 if (board[`box${i}`] === board[`box${i+1}`] && board[`box${i}`] === board[`box${i+2}`]) {
-                    winner = board[`box${i}`]
-                    console.log(winner)
+                    result = board[`box${i}`]
+                    console.log(result)
                 }  
             }
         }
         //Columns
-        if (!winner) {
+        if (!result) {
             for (let i = 1; i <= 3; i += 1) {
                 if (board[`box${i}`] === board[`box${i+3}`] && board[`box${i}`] === board[`box${i+6}`]) {
-                    winner = board[`box${i}`]
-                    console.log(winner)
+                    result = board[`box${i}`]
+                    console.log(result)
                 }
             }
         }
         //Diagonal
-        if (!winner) {
+        if (!result) {
             if (board.box1 === board.box5 && board.box1 === board.box9 || board.box3 === board.box5 && board.box3 === board.box7) {
-                winner = board.box5
-                console.log(winner)
+                result = board.box5
+                console.log(result)
             }
         }
-
-        if (!winner && turnCount === 9) {
+        //Draw
+        if (!result && turnCount === 9) {
+            result = 'draw'
             console.log('draw')
         }
-
+        //Displays result
+        if (result) {
+            let printedResult = $("<p>").html(result);
+            $('header').append(printedResult)
+        }
     }  
     
     
     $('#game-box').on('click', function(event) {
         let clickedBox = event.target.id;
 
-        if (turnCount < 9 && !winner && !board[clickedBox]) {
+        if (turnCount < 9 && !result && !board[clickedBox]) {
             if (turn === 'X') {
                 board[clickedBox]= 'X'
                 $(`#${clickedBox}`).addClass('x')
@@ -69,6 +74,7 @@ $('document').ready(function (){
             } 
         }
     })
+
 
 
 
@@ -107,21 +113,21 @@ $('document').ready(function (){
 
     //When variable 'turn'==='player2' the next on.(click) changes the divs to an O, the same anonymous function will change the value of 'turn' to 'player1'
 
-    //How do we determine a winner?
-        // After every placement, a function will check through all possible permutations of 3 key value pairs in a line. If the function finds 3 equal values a winner will be determined. (This can possibly be done with a for loop)
+    //How do we determine a result?
+        // After every placement, a function will check through all possible permutations of 3 key value pairs in a line. If the function finds 3 equal values a result will be determined. (This can possibly be done with a for loop)
 
     //How do we decide who goes first?
         //  A button that on.('click', ...), changes the turn variable that decides whose turn it is.
 
 //code im saving -->
 
- // if (turn === 'X' && turnCount < 9 && !winner && !board[clickedBox]) {
+ // if (turn === 'X' && turnCount < 9 && !result && !board[clickedBox]) {
         //     board[clickedBox]= 'X'
         //     $(`#${clickedBox}`).addClass('x')
         //     turn = 'O'
         //     turnCount++
         //     determineWinner()
-        // } else if (turn === 'O' && turnCount < 9 && !winner && !board[clickedBox]) {
+        // } else if (turn === 'O' && turnCount < 9 && !result && !board[clickedBox]) {
         //     board[clickedBox]= 'O'
         //     $(`#${clickedBox}`).addClass('o')
         //     turn = 'X'

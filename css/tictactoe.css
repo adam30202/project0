@@ -48,6 +48,11 @@ nav {
     height: 100px;
 }
 
+header {
+    height: 100px;
+    text-align: center;
+}
+
 .chooseX-O {
     position: relative;
     top: 25%;
