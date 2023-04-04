@@ -68,6 +68,19 @@ $('document').ready(function (){
         }
     })
 
+    $('#chooseX').on('click', function () {
+        if (turnCount === 0) {
+            turn = 'X';
+        }
+    })
+
+    $('#chooseO').on('click', function () {
+        if (turnCount === 0) {
+        turn = 'O';
+        }
+    })
+
+
     
 
 

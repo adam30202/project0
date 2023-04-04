@@ -44,3 +44,16 @@ body {
     background-size: cover;
 }
 
+/* nav {
+    
+} */
+
+.chooseX-O {
+    position: relative;
+    top: 50%;
+    left: 38.5%;
+    padding: 11px;
+    margin: 6px;
+    border-radius: 28px;
+}
+
