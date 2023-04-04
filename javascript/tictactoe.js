@@ -21,10 +21,12 @@ $('document').ready(function (){
     const determineWinner = function () {
         //Rows
         if (!result) {
-            for (let i = 1; i <= 7; i += 3) {
-                if (board[`box${i}`] === board[`box${i+1}`] && board[`box${i}`] === board[`box${i+2}`]) {
-                    result = board[`box${i}`]
-                    console.log(result)
+            for (let i = 1; i <= 7; i += 3) { 
+                if (board[`box${i}`] === board[`box${i+1}`] && board[`box${i}`] === board[`box${i+2}`]) { 
+                    if (board[`box${i}`] === 'X' || board[`box${i}`] === 'O') {
+                        result = board[`box${i}`];
+                        console.log(result);
+                    }
                 }  
             }
         }
@@ -32,8 +34,10 @@ $('document').ready(function (){
         if (!result) {
             for (let i = 1; i <= 3; i += 1) {
                 if (board[`box${i}`] === board[`box${i+3}`] && board[`box${i}`] === board[`box${i+6}`]) {
-                    result = board[`box${i}`]
-                    console.log(result)
+                    if (board[`box${i}`] === 'X' || board[`box${i}`] === 'O') {
+                        result = board[`box${i}`];
+                        console.log(result);
+                    }
                 }
             }
         }
@@ -109,7 +113,6 @@ $('document').ready(function (){
     //Button to reset board --- resetButton is added dynamically, so jQuery must retrieve the 'header in the first instance of loading the page.
     $('header').on('click', function (event){
         if (event.target.id === 'resetButton'){
-            console.log('hello')
             for (let i = 1; i <= 9; i++) {
                 board[`box${i}`] = ''
             }
