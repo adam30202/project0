@@ -53,7 +53,7 @@ $('document').ready(function (){
         if (result) {
             let printedResult = $("<p>").html(result).attr('id','printedResult');
             $('header').append(printedResult)
-            let resetButton = $("<input>").attr({type: 'button', value: 'Play again?', id: 'resetButton'});
+            let resetButton = $("<button>").attr({role: 'button', class: 'button-85', id: 'resetButton'}).html('Play again?');
             $('header').append(resetButton)
             if (result === 'X') {
                 XScore ++;
