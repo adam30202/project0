@@ -52,21 +52,25 @@ $('document').ready(function (){
     
     $('#game-box').on('click', function(event) {
         let clickedBox = event.target.id;
-        
-        if (turn === 'X' && turnCount < 9 && !winner) {
-            board[clickedBox]= 'X'
-            $(`#${clickedBox}`).addClass('x')
-            turn = 'O'
-            turnCount++
-            determineWinner()
-        } else if (turn === 'O' && turnCount < 9 && !winner) {
-            board[clickedBox]= 'O'
-            $(`#${clickedBox}`).addClass('o')
-            turn = 'X'
-            turnCount++
-            determineWinner()
+
+        if (turnCount < 9 && !winner && !board[clickedBox]) {
+            if (turn === 'X') {
+                board[clickedBox]= 'X'
+                $(`#${clickedBox}`).addClass('x')
+                turn = 'O'
+                turnCount++
+                determineWinner()
+            } else if (turn === 'O') {
+                board[clickedBox]= 'O'
+                $(`#${clickedBox}`).addClass('o')
+                turn = 'X'
+                turnCount++
+                determineWinner()
+            } 
         }
     })
+
+
 
     $('#chooseX').on('click', function () {
         if (turnCount === 0) {
@@ -79,10 +83,7 @@ $('document').ready(function (){
         turn = 'O';
         }
     })
-
-
-    
-
+})
 
 
 // HTML&CSS
@@ -99,10 +100,7 @@ $('document').ready(function (){
 
 // LOGIC
 
-
-    
-
-     //Pos value is either X or O
+  //Pos value is either X or O
     // These values can be changed on.(click), their value determines the class of a div, that will then determine whether the div shows an X or 0
 
     //When variable 'turn'==='player1' the next on.(click) changes the divs to an X, the same anonymous function will change the value of 'turn' to 'player2'
@@ -115,4 +113,18 @@ $('document').ready(function (){
     //How do we decide who goes first?
         //  A button that on.('click', ...), changes the turn variable that decides whose turn it is.
 
-})
+//code im saving -->
+
+ // if (turn === 'X' && turnCount < 9 && !winner && !board[clickedBox]) {
+        //     board[clickedBox]= 'X'
+        //     $(`#${clickedBox}`).addClass('x')
+        //     turn = 'O'
+        //     turnCount++
+        //     determineWinner()
+        // } else if (turn === 'O' && turnCount < 9 && !winner && !board[clickedBox]) {
+        //     board[clickedBox]= 'O'
+        //     $(`#${clickedBox}`).addClass('o')
+        //     turn = 'X'
+        //     turnCount++
+        //     determineWinner()
+        // }

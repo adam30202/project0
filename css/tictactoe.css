@@ -13,7 +13,6 @@ body {
 
 #container {
     max-width: 960px;
-    /* height: 950px; */
     margin: auto;
     border: 1px solid black;
 }
@@ -23,8 +22,9 @@ body {
     grid-template-columns: 150px 150px 150px;
     grid-template-rows: 150px 150px 150px;
     border: 1px solid black;
-    justify-content: center;
-    
+    width: 448px;
+    height: 447px;
+    margin: auto;
 }
 
 .grid-box {
@@ -44,14 +44,14 @@ body {
     background-size: cover;
 }
 
-/* nav {
-    
-} */
+nav {
+    height: 100px;
+}
 
 .chooseX-O {
     position: relative;
-    top: 50%;
-    left: 38.5%;
+    top: 25%;
+    left: 39%;
     padding: 11px;
     margin: 6px;
     border-radius: 28px;
