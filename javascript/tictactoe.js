@@ -51,18 +51,16 @@ $('document').ready(function (){
         }
         //Displays result and adds to score
         if (result) {
-            let printedResult = $("<p>").html(result);
+            let printedResult = $("<p>").html(result).attr('id','printedResult');
             $('header').append(printedResult)
             let resetButton = $("<input>").attr({type: 'button', value: 'Play again?', id: 'resetButton'});
             $('header').append(resetButton)
             if (result === 'X') {
                 XScore ++;
-                console.log(XScore)
                 $('#XScore').html(XScore.toString())
             } else if (result === 'O') {
                 OScore ++;
                 $('#OScore').html(OScore.toString())
-                console.log(OScore)
             }
         }
     }
@@ -101,17 +99,23 @@ $('document').ready(function (){
         }
     })
 
-    //Button to reset board
-    $('#resetButton').on('click', function (){
-        console.log('hello')
-        for (let i = 1; i <= 9; i++) {
-            board[`box${i}`] = ''
+    //Button to reset board --- resetButton is added dynamically, so jQuery must retrieve the 'header in the first instance of loading the page.
+    $('header').on('click', function (event){
+        if (event.target.id === 'resetButton'){
+            console.log('hello')
+            for (let i = 1; i <= 9; i++) {
+                board[`box${i}`] = ''
+            }
+            console.log(board)
+            $('.grid-box').removeClass('o x');
+            turn = 'X';
+            result = '';
+            turnCount = 0;
+            resetButton.remove();
+            $('#printedResult').remove();
         }
-        console.log(board)
-        $('.grid-box').removeClass('o');
     })
 })
-
 
 // HTML&CSS
     // Board is created with divs 
