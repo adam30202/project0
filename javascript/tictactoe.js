@@ -55,7 +55,7 @@ $('document').ready(function (){
         }
         //Displays result and adds to score
         if (result) {
-            let printedResult = $("<p>").attr('id','printedResult');
+            let printedResult = $("<p>").attr({id: 'printedResult', class: 'animate__animated animate__fadeIn'});
             if (result !== 'draw') {
                 printedResult.html(`${result} WINS!`);
                 $('header').append(printedResult);
@@ -64,7 +64,7 @@ $('document').ready(function (){
                 $('header').append(printedResult);
             }
 
-            let resetButton = $("<button>").attr({role: 'button', class: 'button-85', id: 'resetButton'}).html('Play again?');
+            let resetButton = $("<button>").attr({role: 'button', class: 'button-85 animate__animated animate__fadeIn', id: 'resetButton'}).html('Play again?');
             $('header').append(resetButton)
             if (result === 'X') {
                 XScore ++;
@@ -121,8 +121,14 @@ $('document').ready(function (){
             turn = 'X';
             result = '';
             turnCount = 0;
-            resetButton.remove();
-            $('#printedResult').remove();
+            $('#resetButton').addClass('animate__fadeOut');
+            setTimeout(function () {
+                resetButton.remove()}, 3000
+            )
+            $('#printedResult').addClass('animate__fadeOut');
+            setTimeout(function () {
+                $('#printedResult').remove()}, 3000
+            )
         }
     })
 })
