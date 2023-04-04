@@ -51,8 +51,15 @@ $('document').ready(function (){
         }
         //Displays result and adds to score
         if (result) {
-            let printedResult = $("<p>").html(result).attr('id','printedResult');
-            $('header').append(printedResult)
+            let printedResult = $("<p>").attr('id','printedResult');
+            if (result !== 'draw') {
+                printedResult.html(`${result} WINS!`);
+                $('header').append(printedResult);
+            } else {
+                printedResult.html(`DRAW!&#160;`);
+                $('header').append(printedResult);
+            }
+
             let resetButton = $("<button>").attr({role: 'button', class: 'button-85', id: 'resetButton'}).html('Play again?');
             $('header').append(resetButton)
             if (result === 'X') {

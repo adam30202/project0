@@ -26,14 +26,12 @@ p {
 #container {
     max-width: 960px;
     margin: auto;
-    border: 1px solid black;
 }
 
 #game-box { /* Investigate so that the box background cannot chagne class*/
     display: grid;
     grid-template-columns: 150px 150px 150px;
     grid-template-rows: 150px 150px 150px;
-    /* border: 1px solid black; */
     width: 448px;
     height: 447px;
     margin: auto;
@@ -43,7 +41,7 @@ p {
     display: grid;
     place-items: center;
     /* background-color: rgb(191, 33, 33); */
-    border: 3px solid rgba(123, 134, 254, 0.754);
+    border: 1em ridge rgba(123, 134, 254, 0.754);
 }
 
 .x {
@@ -67,7 +65,7 @@ header {
 
 header p {
     position: absolute;
-    left: 50%;
+    left: 45.6%;
     top: -20%;
 }
 
@@ -82,38 +80,13 @@ header button {
     left: 40%;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 /* Button design from https://getcssscan.com/css-buttons-examples by CSS Scan*/
 .button-85 {
   padding: 0.6em 2em;
   border: none;
   outline: none;
   color: rgb(255, 255, 255);
-  background: #111;
+  background: #691d87;
   cursor: pointer;
   position: relative;
   z-index: 0;
@@ -169,7 +142,7 @@ header button {
   position: absolute;
   width: 100%;
   height: 100%;
-  background: #222;
+  background: #691d87;
   left: 0;
   top: 0;
   border-radius: 10px;
