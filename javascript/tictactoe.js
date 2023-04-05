@@ -60,7 +60,7 @@ $('document').ready(function (){
                 printedResult.html(`${result} WINS!`);
                 $('header').append(printedResult);
             } else {
-                printedResult.html(`DRAW!&#160;`);
+                printedResult.html(`-DRAW-`);
                 $('header').append(printedResult);
             }
 

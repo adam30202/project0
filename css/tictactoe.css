@@ -69,13 +69,14 @@ header {
 
 header p {
     position: absolute;
-    left: 45.6%;
-    top: -20%;
+    left: 41%;
+    top: -39%;
+    font-size: 28px;
 }
 
 nav button {
     top: -15%;
-    left: 28%;
+    left: 27%;
     margin: 6px;
 }
 
@@ -150,4 +151,9 @@ header button {
   left: 0;
   top: 0;
   border-radius: 10px;
+}
+
+.button-85:active {
+  box-shadow: #fff 2px 2px 0 0, #000 2px 2px 0 1px;
+  transform: translate(2px, 2px);
 }
