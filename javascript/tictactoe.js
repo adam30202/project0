@@ -56,7 +56,7 @@ $('document').ready(function (){
                 printedResult.html(`${result} WINS!`);
                 $('header').append(printedResult);
             } else {
-                printedResult.html(`-DRAW-`);
+                printedResult.html(`&nbspDRAW`);
                 $('header').append(printedResult);
             }
 
@@ -75,8 +75,8 @@ $('document').ready(function (){
     //Function that allows user to place X or O on board
     $('#game-box').on('click', function(event) {
         let clickedBox = event.target.id;
-
         if (turnCount < 9 && !result && !board[clickedBox] && $(event.target).hasClass('grid-box')) {
+
             if (turn === 'X') {
                 board[clickedBox]= 'X'
                 $(`#${clickedBox}`).addClass('x animate__fadeIn')
@@ -119,12 +119,15 @@ $('document').ready(function (){
             
             $('#resetButton').addClass('animate__fadeOut');
             setTimeout(function () {
-                resetButton.remove()}, 1500
+                resetButton.remove()}, 1000
             );
             $('#printedResult').addClass('animate__fadeOut');
             setTimeout(function () {
-                $('#printedResult').remove()}, 1500
+                $('#printedResult').remove()}, 1000
             );
         }
     })
 })
+
+
+
