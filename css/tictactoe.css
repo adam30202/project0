@@ -40,18 +40,21 @@ p {
 .grid-box {
     display: grid;
     place-items: center;
-    /* background-color: rgb(191, 33, 33); */
     border: 1em ridge rgba(53, 35, 109, 0.692);
 }
 
 .x {
-    background-image: url('images/cat.jpg');
+    background-image: url('images/X.jpg');
     background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
 .o {
-    background-image: url('images/dog.jpg');
+    background-image: url('images/O.jpg');
     background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
 nav {
