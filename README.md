@@ -1,18 +1,19 @@
 # Project Zero - Tic Tac Toe
 
+[**Link to game**](https://adam30202.github.io/project0/)
+
 ## Technologies Used:
 
 -   HTML
 -   CSS
 -   JavaScript
 -   jQuery
--   Animations obtained from the following websites:
+-   Animations, effects, and styles obtained from the following websites:
     -   https://animate.style/
     -   https://getcssscan.com/css-buttons-examples
--   Imported Google font:
     -   https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap
 
-## Chat it can do:
+## What it can do:
 
 -   Tic tac toe can be played.
 
@@ -26,10 +27,15 @@
 
 -   The score is tracked in the top left corner.
 
-## What can it not do:
+-   By default, when the page is first loaded, X goes first. After every game, the player who did NOT move last goes first.
+
+## What it can not do:
 
 -   Currently the user cannot play against the computer.
 -   The game is restricted to only a 3x3 board.
 -   Players cannot customize their X or O tokens.
+    <br>
+    <br>
+    <br>
 
-### Special thanks to the IAs and Joel for your ongoing support!
+### **Special thanks to Tina, Mark, CJ, and Joel for all your support throughout this project!**

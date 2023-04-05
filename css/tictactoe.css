@@ -35,7 +35,7 @@ p {
 .grid-box {
     display: grid;
     place-items: center;
-    border: 1em ridge rgba(53, 35, 109, 0.692);
+    border: 1em ridge rgba(53, 35, 109, 1);
 }
 
 .x {

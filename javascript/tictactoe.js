@@ -25,7 +25,6 @@ $('document').ready(function (){
                 if (board[`box${i}`] === board[`box${i+1}`] && board[`box${i}`] === board[`box${i+2}`]) { 
                     if (board[`box${i}`] === 'X' || board[`box${i}`] === 'O') {
                         result = board[`box${i}`];
-                        console.log(result);
                     }
                 }  
             }
@@ -36,7 +35,6 @@ $('document').ready(function (){
                 if (board[`box${i}`] === board[`box${i+3}`] && board[`box${i}`] === board[`box${i+6}`]) {
                     if (board[`box${i}`] === 'X' || board[`box${i}`] === 'O') {
                         result = board[`box${i}`];
-                        console.log(result);
                     }
                 }
             }
@@ -45,13 +43,11 @@ $('document').ready(function (){
         if (!result) {
             if (board.box1 === board.box5 && board.box1 === board.box9 || board.box3 === board.box5 && board.box3 === board.box7) {
                 result = board.box5
-                console.log(result)
             }
         }
         //Draw
         if (!result && turnCount === 9) {
             result = 'draw'
-            console.log('draw')
         }
         //Displays result and adds to score
         if (result) {
@@ -117,9 +113,7 @@ $('document').ready(function (){
             for (let i = 1; i <= 9; i++) {
                 board[`box${i}`] = ''
             }
-            console.log(board)
             $('.grid-box').removeClass('o x animate__fadeIn');
-            turn = 'X';
             result = '';
             turnCount = 0;
             
@@ -134,9 +128,3 @@ $('document').ready(function (){
         }
     })
 })
-
-// Things to check and do:
-    //  1. You can click on the backbaord and change the background image of that, this can be replicated when I click drag and release my mouse
-    //  2. Animate in and out the X and Os
-    //  3. Relate the X and Os to the UI (score etc)
-    //  4. Create option to play AI
