@@ -25,9 +25,11 @@
 
 -   The user can also choose whether an X or O will be placed first.
 
--   The score is tracked in the top left corner.
-
 -   By default, when the page is first loaded, X goes first. After every game, the player who did NOT move last goes first.
+
+-   The score is tracked at the top of the screen. X or O is green depending whose turn it is. It does not display green for the first default X turn unless the user selects either X or O to go first
+
+-   If the user expand the screen wide enough there is a secret button that changes the X and O characters. This button can toggle the characters even during a game (this is a feature).
 
 ## What it can not do:
 
