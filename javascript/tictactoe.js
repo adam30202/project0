@@ -5,6 +5,14 @@ $('document').ready(function (){
     let turnCount = 0;
     let XScore = 0;
     let OScore = 0;
+    // if the game isnt over, and if it is X or Os turn, change color of X or O
+    if (turnCount < 9) {
+        if (turn === 'X') {
+            $('XTurn').css('color', 'green')
+            $('OTurn').css('color', 'red')
+        }
+    }
+    // $('XTurn').css('color', 'green')
 
         const board = {
             box1: '',
@@ -77,15 +85,34 @@ $('document').ready(function (){
         let clickedBox = event.target.id;
         if (turnCount < 9 && !result && !board[clickedBox] && $(event.target).hasClass('grid-box')) {
 
+            //Changes color of X or O depending whose turn it is.
+            if (turn === 'X') {
+                $('#OTurn').addClass('turn');
+                $('#XTurn').removeClass('turn');
+            } else if (turn === 'O') {
+                $('#XTurn').addClass('turn');
+                $('#OTurn').removeClass('turn');
+            }
+            
+
             if (turn === 'X') {
                 board[clickedBox]= 'X'
-                $(`#${clickedBox}`).addClass('x animate__fadeIn')
+                if (secretButton) {
+                    $(`#${clickedBox}`).addClass('secretCat animate__fadeIn')
+                } else {
+                    $(`#${clickedBox}`).addClass('x animate__fadeIn')
+                }
+                
                 turn = 'O'
                 turnCount++
                 determineWinner()
             } else if (turn === 'O') {
                 board[clickedBox]= 'O'
+                if (secretButton) {
+                    $(`#${clickedBox}`).addClass('secretDog animate__fadeIn')
+                } else {
                 $(`#${clickedBox}`).addClass('o animate__fadeIn')
+                }
                 turn = 'X'
                 turnCount++
                 determineWinner()
@@ -97,12 +124,16 @@ $('document').ready(function (){
     $('#chooseX').on('click', function () {
         if (turnCount === 0) {
             turn = 'X';
+            $('#XTurn').addClass('turn');
+            $('#OTurn').removeClass('turn');
         }
     })
 
     $('#chooseO').on('click', function () {
         if (turnCount === 0) {
-        turn = 'O';
+            turn = 'O';
+            $('#OTurn').addClass('turn');
+            $('#XTurn').removeClass('turn');
         }
     })
 
@@ -113,7 +144,7 @@ $('document').ready(function (){
             for (let i = 1; i <= 9; i++) {
                 board[`box${i}`] = ''
             }
-            $('.grid-box').removeClass('o x animate__fadeIn');
+            $('.grid-box').removeClass('secretCat secretDog o x animate__fadeIn');
             result = '';
             turnCount = 0;
             
@@ -127,7 +158,9 @@ $('document').ready(function (){
             );
         }
     })
+
+    let secretButton = false;
+    $('#secret-button').on('click', function () {
+        secretButton = !secretButton
+    })
 })
-
-
-
