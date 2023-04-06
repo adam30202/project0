@@ -59,6 +59,8 @@ header p {
   color: green;
 }
 
+/* Board dharacters Styling */
+
 .x {
   background-image: url('images/X.jpg');
   background-size: cover;
