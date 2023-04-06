@@ -6,6 +6,7 @@ $('document').ready(function (){
     let XScore = 0;
     let OScore = 0;
 
+    //Board used for logic
         const board = {
             box1: '',
             box2: '',
@@ -18,6 +19,7 @@ $('document').ready(function (){
             box9: '',
         };
     
+    //Determines winner (If there is a result, also displays the result and a reset button)
     const determineWinner = function () {
         //Rows
         if (!result) {
@@ -73,7 +75,7 @@ $('document').ready(function (){
         }
     }
     
-    //Function that allows user to place X or O on board
+    //Function that allows user to place X or O (or secret characters) on the board, changes color of X or O depending whose turn it is, and calls determineWinner() after each turn.
     $('#game-box').on('click', function(event) {
         let clickedBox = event.target.id;
         if (turnCount < 9 && !result && !board[clickedBox] && $(event.target).hasClass('grid-box')) {
@@ -87,7 +89,6 @@ $('document').ready(function (){
                 $('#OTurn').removeClass('turn');
             }
             
-
             if (turn === 'X') {
                 board[clickedBox]= 'X'
                 if (secretButton) { // Conditional to enable use of secret characters 
@@ -113,7 +114,7 @@ $('document').ready(function (){
         }
     })
 
-    //Button that allows user to go first as X or O
+    //Button that allows the user to choose to go first as either X or O
     $('#chooseX').on('click', function () {
         if (turnCount === 0) {
             turn = 'X';
@@ -134,18 +135,18 @@ $('document').ready(function (){
     $('header').on('click', function (event){
         if (event.target.id === 'resetButton'){
 
-            for (let i = 1; i <= 9; i++) {
+            for (let i = 1; i <= 9; i++) { //Resets board object
                 board[`box${i}`] = ''
             }
-            $('.grid-box').removeClass('secretCat secretDog o x animate__fadeIn');
+            $('.grid-box').removeClass('secretCat secretDog o x animate__fadeIn'); //Removes classes from grid boxes, this clears the board
             result = '';
             turnCount = 0;
             
-            $('#resetButton').addClass('animate__fadeOut');
+            $('#resetButton').addClass('animate__fadeOut'); //Times the removal of the reset button so that it can fade out
             setTimeout(function () {
                 resetButton.remove()}, 1000
             );
-            $('#printedResult').addClass('animate__fadeOut');
+            $('#printedResult').addClass('animate__fadeOut'); //Times the removal of the result button so that it can fade out
             setTimeout(function () {
                 $('#printedResult').remove()}, 1000
             );
