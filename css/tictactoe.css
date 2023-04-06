@@ -57,6 +57,22 @@ header p {
 
 .turn {
   color: green;
+  animation: score-pulse 1s infinite;
+}
+
+/* Added a color pulse on the score to show whose turn it is more clearly */
+
+@keyframes score-pulse {
+  0% {
+    color: green
+  }
+  50%{
+    color: #fff;
+  }
+  100% {
+    color: green
+  }
+
 }
 
 /* Board dharacters Styling */
