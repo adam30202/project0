@@ -5,14 +5,6 @@ $('document').ready(function (){
     let turnCount = 0;
     let XScore = 0;
     let OScore = 0;
-    // if the game isnt over, and if it is X or Os turn, change color of X or O
-    if (turnCount < 9) {
-        if (turn === 'X') {
-            $('XTurn').css('color', 'green')
-            $('OTurn').css('color', 'red')
-        }
-    }
-    // $('XTurn').css('color', 'green')
 
         const board = {
             box1: '',
@@ -57,7 +49,8 @@ $('document').ready(function (){
         if (!result && turnCount === 9) {
             result = 'draw'
         }
-        //Displays result and adds to score
+
+        //Displays result and reset button - also adds to score
         if (result) {
             let printedResult = $("<p>").attr({id: 'printedResult', class: 'animate__animated animate__fadeIn'});
             if (result !== 'draw') {
@@ -97,7 +90,7 @@ $('document').ready(function (){
 
             if (turn === 'X') {
                 board[clickedBox]= 'X'
-                if (secretButton) {
+                if (secretButton) { // Conditional to enable use of secret characters 
                     $(`#${clickedBox}`).addClass('secretCat animate__fadeIn')
                 } else {
                     $(`#${clickedBox}`).addClass('x animate__fadeIn')
@@ -108,10 +101,10 @@ $('document').ready(function (){
                 determineWinner()
             } else if (turn === 'O') {
                 board[clickedBox]= 'O'
-                if (secretButton) {
+                if (secretButton) { // Conditional to enable use of secret characters 
                     $(`#${clickedBox}`).addClass('secretDog animate__fadeIn')
                 } else {
-                $(`#${clickedBox}`).addClass('o animate__fadeIn')
+                    $(`#${clickedBox}`).addClass('o animate__fadeIn')
                 }
                 turn = 'X'
                 turnCount++
@@ -120,7 +113,7 @@ $('document').ready(function (){
         }
     })
 
-    //Allows user to go first as X or O
+    //Button that allows user to go first as X or O
     $('#chooseX').on('click', function () {
         if (turnCount === 0) {
             turn = 'X';
@@ -159,6 +152,7 @@ $('document').ready(function (){
         }
     })
 
+    // Secret button toggle on/off
     let secretButton = false;
     $('#secret-button').on('click', function () {
         secretButton = !secretButton
